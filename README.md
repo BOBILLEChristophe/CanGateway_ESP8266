@@ -1,4 +1,6 @@
 # CanGateway_ESP8266
+Gateway CAN/WiFi/Serial with ESP8266
+
 <h1>Passerelle CAN/WiFI/Serial sur ESP8266</h1>
 <p>Cette passerelle permet d'interconnecter un bus CAN avec un réseau en Ethernet et/ou WiFi mais également en utilisant le port série de l'ESP8266.</p>
 <p><img src="http://www.locoduino.org/local/cache-vignettes/L500xH326/locoduino_wifi_can-gatewayesp8266_nirenmcp2515_dsc6798-33ae1.jpg?1548598275"  height="398" width="610"></p></p>
@@ -15,17 +17,17 @@
 <p>
 <code>
 // WIFI<br>
-#define WIFI_SSID "your_SSID"<br>
+  #define WIFI_SSID "your_SSID"<br>
 #define WIFI_PSW  "your_PSW"
 </code></p>
 <p>Le mapping des pins avec un controleur CAN est renseigné également dans ce fichier :</p>
 <p>
 <code>
 /* PINS: CS=D0, INT=D4, SCK=D5, SO=D6, SI=D7 */<br>
-#define CAN_CSPIN 16   // Set CS to pin 16 (D0)<br>
-#define CAN_INTERPIN 2 // Set INT to pin 2 (D4)
+  #define CAN_CSPIN 16   // Set CS to pin 16 (D0)<br>
+  #define CAN_INTERPIN 2 // Set INT to pin 2 (D4)
 </code></p>
-
+  
 <p>Ainsi que la vitesse du bus CAN</p>
 <p><code>
 #define CAN_BAUDRATE 18
@@ -45,16 +47,16 @@
 <p>En cas de problème avec l'adresse DNS, l'adresse IP du serveur s'affiche dans le moniteur du debug :</p>
 <blockquote>
 <p>Serial port ok !<br>
-Wifi connecting to AP....<br>
-Wifi connection established !<br>
-IP address :.....192.168.86.38<br>
-Netmask :........255.255.255.0<br>
-Gateway :........192.168.86.1<br>
-Mac adress :.....84:F3:EB:18:76:2C<br>
-DNS :............http://cangw/</p>
+  Wifi connecting to AP....<br>
+  Wifi connection established !<br>
+  IP address :.....192.168.86.38<br>
+  Netmask :........255.255.255.0<br>
+  Gateway :........192.168.86.1<br>
+  Mac adress :.....84:F3:EB:18:76:2C<br>
+  DNS :............http://cangw/</p>
 </blockquote>
-<p>P address : 192.168.86.38. L'application devra alors être appelée sur l'URL : http://192.168.86.38/satellite.html</p>
+<p>IP address : 192.168.86.38. L'application devra alors être appelée sur l'URL : http://192.168.86.38/satellite.html</p>
 <p>En manipulant les boutons et sliders, les informations de positions sont envoyées en temps réel et seront visibles dans la fenêtre du moniteur sous cette forme :</p>
 <p>Wifi [0] get Text: 0x1FFFFF21 1 3 0x1 0x12 0x73</p>
 <p>Il s'agit  d'un message CAN avec un identifiant sur 11 bits (0x1FFFFF21) avec 3 octets de données (0x1 0x12 0x73).</p>
-<p>Notez que ce même message : 0x1FFFFF21 1 3 0x1 0x12 0x73 pourrait être directement saisie dans une application gérant des communications    série ou plus simplement dans la zone de saisie de la fenêtre moniteur de l'IDE Arduino si vous utilisez cette application.</p>
+<p>Notez que ce même message : 0x1FFFFF21 1 3 0x1 0x12 0x73 pourrait être directement saisie dans une application gérant des communications	série ou plus simplement dans la zone de saisie de la fenêtre moniteur de l'IDE Arduino si vous utilisez cette application.</p>
